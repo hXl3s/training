@@ -203,7 +203,7 @@ class MLPerfCallback(pl.Callback):
         return super().on_train_end(trainer, pl_module)
     
     @rank_zero_only
-    def log_eval_start(self, trainer, pl_module)
+    def log_eval_start(self, trainer, pl_module):
         mllogger.end(key=constants.BLOCK_STOP, metadata={constants.SAMPLES_COUNT: self.consumed_samples(trainer)})
         mllogger.start(key=constants.EVAL_START, metadata={constants.SAMPLES_COUNT: self.consumed_samples(trainer)})
 
